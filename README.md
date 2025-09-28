@@ -17,13 +17,12 @@ O sistema permitirá:
   - `resiclame.sql`: Script principal para criação das tabelas e relações do banco de dados.
   - `proposta.sql`: Script complementar, incluindo funcionalidades adicionais ou propostas de melhoria.
 
-- **diagramas/**: Diagrams do banco de dados em PNG e JPG.
-  - `der_logico.png` / `der_logico.jpg`: Diagrama lógico.
-  - `der_fisico.png` / `der_fisico.jpg`: Diagrama físico.
+- **diagramas/**: Diagrams do banco de dados em PNG e txt.
+- - `der_Conceitual.png` / `der_Conceitual.txt`: Diagrama Conceitual.
+  - `der_logico.png` / `der_logico.txt`: Diagrama lógico.
+  - `der_fisico.png` / `der_fisico.txt`: Diagrama físico.
 
 - **codigo/**: Código-fonte do projeto, incluindo o analisador léxico e demais arquivos relacionados.
-
-- **relatorio/**: Relatório técnico do projeto em PDF.
 
 - **README.md**: Este arquivo com instruções.
 
@@ -37,11 +36,11 @@ O sistema permitirá:
    - Execute em seguida o script `resiclame.sql` para criar todas as tabelas e relações do banco.
 
 2. **Diagrama**:
-   - As imagens em PNG e JPG estão disponíveis na pasta `diagramas/`.
+   - As imagens em PNG estão disponíveis na pasta `diagramas/`.
    - Podem ser abertas diretamente em qualquer visualizador de imagens.
 
 3. **Código**:
-   - Todos os arquivos-fonte estão na pasta `codigo/`.
+   - Todos os arquivos-fonte estão na pasta `reciclame/`.
    - Compile os arquivos em C conforme necessário:
      ```bash
      gcc lexer.c -o lexer
@@ -51,10 +50,5 @@ O sistema permitirá:
 4. **Relatório**:
    - O relatório técnico detalha a implementação, explicações do projeto e instruções adicionais.
 
----
-
-## Observações
-- Mantenha a estrutura das pastas ao descompactar o arquivo ZIP.
-- O escopo descrito deve ser usado como guia para teste das funcionalidades do sistema.
 
 # Sustentabilidade_Sistema-Reciclagem-Inteligente
