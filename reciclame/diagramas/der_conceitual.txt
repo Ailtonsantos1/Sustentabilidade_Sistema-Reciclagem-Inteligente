@@ -1,0 +1,12 @@
+erDiagram
+    PESSOA ||--o{ COLETA : "realiza"
+    PONTO_COLETA ||--o{ COLETA : "ocorre em"
+    COLETA ||--o{ COLETA_RESIDUO : "envolve"
+    RESIDUO ||--o{ COLETA_RESIDUO : "está em"
+    COOPERATIVA ||--o{ RESIDUO : "gerencia"
+    EMPRESA ||--o{ RESIDUO : "produz"
+    PESSOA ||--o{ PESSOA_RECOMPENSA : "recebe"
+    RECOMPENSA ||--o{ PESSOA_RECOMPENSA : "é concedida"
+    PONTO_COLETA ||--o{ PONTO_COLETA_ACEITA : "aceita"
+    TIPO_RESIDUO ||--o{ PONTO_COLETA_ACEITA : "permitido"
+    RESIDUO ||--|| MATERIAL_ESPECIAL : "pode ser"

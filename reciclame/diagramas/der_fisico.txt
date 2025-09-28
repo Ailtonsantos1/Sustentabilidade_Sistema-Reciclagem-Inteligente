@@ -1,0 +1,63 @@
+erDiagram
+    pessoa {
+        CHAR cpf PK
+    }
+
+    empresa {
+        CHAR cnpj PK
+    }
+
+    cooperativa {
+        INT id_coop PK
+    }
+
+    ponto_coleta {
+        INT id_ponto PK
+    }
+
+    tipo_residuo {
+        INT id_tipo PK
+    }
+
+    residuo {
+        INT id_residuo PK
+    }
+
+    material_especial {
+        INT id_residuo PK, FK
+    }
+
+    coleta {
+        INT id_coleta PK
+    }
+
+    coleta_residuo {
+        INT id_coleta FK
+        INT id_residuo FK
+    }
+
+    recompensa {
+        INT id_recompensa PK
+    }
+
+    pessoa_recompensa {
+        INT id_historico PK
+    }
+
+    ponto_coleta_aceita {
+        INT id_ponto FK
+        INT id_tipo FK
+    }
+
+    %% RELACIONAMENTOS
+    pessoa ||--o{ coleta : "realiza"
+    ponto_coleta ||--o{ coleta : "ocorre em"
+    coleta ||--o{ coleta_residuo : "envolve"
+    residuo ||--o{ coleta_residuo : "está em"
+    cooperativa ||--o{ residuo : "gera"
+    empresa ||--o{ residuo : "produz"
+    pessoa ||--o{ pessoa_recompensa : "recebe"
+    recompensa ||--o{ pessoa_recompensa : "concede"
+    ponto_coleta ||--o{ ponto_coleta_aceita : "aceita"
+    tipo_residuo ||--o{ ponto_coleta_aceita : "permitido"
+    residuo ||--|| material_especial : "pode ser"

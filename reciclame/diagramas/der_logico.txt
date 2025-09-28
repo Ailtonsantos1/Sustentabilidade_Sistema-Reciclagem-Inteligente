@@ -1,0 +1,105 @@
+erDiagram
+    pessoa {
+        CHAR cpf PK
+        VARCHAR nome
+        VARCHAR endereco_rua
+        VARCHAR endereco_numero
+        VARCHAR endereco_bairro
+        VARCHAR endereco_cidade
+        CHAR endereco_uf
+        DATE data_nascimento
+        VARCHAR telefone
+        VARCHAR email
+    }
+
+    empresa {
+        CHAR cnpj PK
+        VARCHAR razao_social
+        VARCHAR area_atuacao
+    }
+
+    cooperativa {
+        INT id_coop PK
+        VARCHAR nome
+        VARCHAR endereco_rua
+        VARCHAR endereco_numero
+        VARCHAR endereco_bairro
+        VARCHAR endereco_cidade
+        CHAR endereco_uf
+        INT capacidade_processamento
+    }
+
+    ponto_coleta {
+        INT id_ponto PK
+        VARCHAR localizacao
+        INT capacidade
+    }
+
+    tipo_residuo {
+        INT id_tipo PK
+        VARCHAR nome
+        TEXT descricao
+    }
+
+    residuo {
+        INT id_residuo PK
+        INT id_tipo FK
+        DECIMAL peso
+        DATE data_registro
+        INT id_coop FK
+        CHAR cnpj_empresa FK
+    }
+
+    material_especial {
+        INT id_residuo PK, FK
+        VARCHAR tipo_especial
+        TEXT cuidado_armazenamento
+    }
+
+    coleta {
+        INT id_coleta PK
+        DATE data
+        VARCHAR status
+        CHAR cpf FK
+        INT id_ponto FK
+    }
+
+    coleta_residuo {
+        INT id_coleta FK
+        INT id_residuo FK
+        DECIMAL peso_coletado
+        INT quantidade
+    }
+
+    recompensa {
+        INT id_recompensa PK
+        VARCHAR tipo
+        DECIMAL valor
+    }
+
+    pessoa_recompensa {
+        INT id_historico PK
+        CHAR cpf FK
+        INT id_recompensa FK
+        DATE data_concessao
+        DECIMAL valor_utilizado
+        VARCHAR observacao
+    }
+
+    ponto_coleta_aceita {
+        INT id_ponto FK
+        INT id_tipo FK
+    }
+
+    %% RELACIONAMENTOS
+    pessoa ||--o{ coleta : "1:N"
+    ponto_coleta ||--o{ coleta : "1:N"
+    coleta ||--o{ coleta_residuo : "1:N"
+    residuo ||--o{ coleta_residuo : "1:N"
+    cooperativa ||--o{ residuo : "1:N"
+    empresa ||--o{ residuo : "1:N"
+    pessoa ||--o{ pessoa_recompensa : "1:N"
+    recompensa ||--o{ pessoa_recompensa : "1:N"
+    ponto_coleta ||--o{ ponto_coleta_aceita : "1:N"
+    tipo_residuo ||--o{ ponto_coleta_aceita : "1:N"
+    residuo ||--|| material_especial : "1:1"
